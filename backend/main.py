@@ -51,7 +51,7 @@ def calculate_monthly_payment(
 
 
 # -------------------------
-# Decision Logic Engine
+# Decision Logic
 # -------------------------
 
 def evaluate_affordability(input: FinancialInput) -> dict:
