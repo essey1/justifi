@@ -39,4 +39,23 @@ FastAPI (Backend)
 ### AI Recommendations
 - Triggered only when a purchase is risky or unaffordable  
 - Suggests practical, budget-conscious alternatives  
-- Focuses on realistic substitutions, delays, or cost reductions  
+- Focuses on realistic substitutions, delays, or cost reductions
+
+## Next Steps
+
+### User Account System
+- Implement secure user accounts with authentication.
+- Allow users to store income, fixed expenses, debts, and preferences once.
+- Enable instant affordability checks for new purchases without reentering financial data each time.
+- Support profile updates to reflect changing financial situations.
+
+### Saved Scenarios and Purchase History
+- Let users save past affordability evaluations.
+- Compare multiple purchase options side by side.
+- Track how affordability changes over time as income or expenses change.
+
+### Budget Planning Tools
+- Provide monthly budget breakdowns with clear visual summaries.
+- Alert users when a proposed purchase exceeds safe spending thresholds.
+- Support adjustable financial goals such as savings or debt reduction targets.
+
