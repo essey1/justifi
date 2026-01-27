@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 
 type FinancialInput = {
   income: number;
@@ -43,7 +45,7 @@ function App() {
 
     try {
       const response = await axios.post<Verdict>(
-        "http://localhost:8000/evaluate",
+        `${API_URL}/evaluate`,
         form
       );
       setResult(response.data);
