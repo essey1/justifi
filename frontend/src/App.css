@@ -1,38 +1,125 @@
-.App {
-  text-align: center;
+/* -------------------------
+   Color palette
+------------------------- */
+:root {
+  --green: #1f7a4d;
+  --green-light: #e8f3ee;
+  --green-dark: #155c3a;
+  --white: #ffffff;
+  --gray: #666666;
+  --border: #d9e5df;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* -------------------------
+   Global reset
+------------------------- */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  background-color: var(--green-light);
+  color: var(--green-dark);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* -------------------------
+   App container
+------------------------- */
+div {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-.App-link {
-  color: #61dafb;
+/* -------------------------
+   Headings
+------------------------- */
+h1 {
+  margin-bottom: 0.25rem;
+  color: var(--green);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+/* -------------------------
+   Form layout
+------------------------- */
+label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--green-dark);
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--green);
+  background-color: var(--green-light);
+}
+
+/* -------------------------
+   Button
+------------------------- */
+button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--green);
+  color: var(--white);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--green-dark);
+}
+
+button:disabled {
+  background-color: #9fbfb0;
+  cursor: not-allowed;
+}
+
+/* -------------------------
+   Result card
+------------------------- */
+h3 {
+  margin-bottom: 0.25rem;
+  color: var(--green);
+}
+
+div > div {
+  background-color: var(--green-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* -------------------------
+   Error text
+------------------------- */
+p[style*="red"] {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
