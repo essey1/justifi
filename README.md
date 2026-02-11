@@ -1,5 +1,5 @@
 # Justifi
-
+https://justifee.netlify.app/ 
 ## System Design
 
 This application is a **financial decision engine** that evaluates whether a loan or large purchase is affordable based on a user’s income and expenses. When a purchase is risky or unaffordable, the system provides **AI-generated alternatives** aligned with the user’s budget and intent.
