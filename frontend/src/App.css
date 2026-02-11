@@ -8,25 +8,12 @@
   --white: #ffffff;
   --gray: #666666;
   --border: #d9e5df;
+  --error-red: #b00020;
 }
 
 /* -------------------------
    Global reset
 ------------------------- */
-
-* {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: var(--green-light);
-  color: var(--green-dark);
-}
-
-
 *,
 *::before,
 *::after {
@@ -36,16 +23,23 @@ body {
 html, body {
   margin: 0;
   padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: var(--green-light);
+  color: var(--green-dark);
 }
 
 /* -------------------------
    App container
 ------------------------- */
-div {
+#root > div {
   background-color: var(--white);
   border-radius: 12px;
   padding: 2rem;
-  margin-top: 4rem;
+  margin: 4rem auto 0;
+  max-width: 500px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
@@ -53,6 +47,13 @@ div {
    Headings
 ------------------------- */
 h1 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  color: var(--green);
+}
+
+h3 {
+  margin-top: 0;
   margin-bottom: 0.25rem;
   color: var(--green);
 }
@@ -72,6 +73,7 @@ label {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   color: var(--green-dark);
+  font-weight: 500;
 }
 
 input {
@@ -101,10 +103,12 @@ button {
   background-color: var(--green);
   color: var(--white);
   font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: var(--green-dark);
 }
 
@@ -114,25 +118,31 @@ button:disabled {
 }
 
 /* -------------------------
-   Result card
+   Error text
 ------------------------- */
-h3 {
-  margin-bottom: 0.25rem;
-  color: var(--green);
-}
-
-div > div {
-  background-color: var(--green-light);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-top: 1.5rem;
+p[style*="color: red"],
+p[style*="color:red"] {
+  color: var(--error-red) !important;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 /* -------------------------
-   Error text
+   Result card
 ------------------------- */
-p[style*="red"] {
-  color: #b00020;
-  font-size: 0.9rem;
-  margin-top: 1rem;
+#root > div > div[style*="marginTop"] {
+  background-color: var(--green-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem !important;
+}
+
+#root > div > div[style*="marginTop"] h3 {
+  margin-bottom: 0.5rem;
+}
+
+#root > div > div[style*="marginTop"] p {
+  margin-bottom: 0;
+  color: var(--green-dark);
 }
