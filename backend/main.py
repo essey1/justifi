@@ -80,28 +80,19 @@ def generate_ai_recommendations(
     Status: {status}
 
     Provide practical financial recommendations.
-
-    Only suggest:
-    - Lowering loan amount
-    - Extending term
-    - Cutting expenses
-    - Delaying purchase
-    - Cheaper alternatives
-
-    Keep it short.
-    Be direct.
-    Avoid emotional tone.
+    Keep it short and direct.
     """
 
-    chat_completion = client.chat.completions.create(
+    completion = client.chat.completions.create(
+        model="llama3-8b-8192",
         messages=[
             {"role": "user", "content": prompt}
         ],
-        model="llama3-8b-8192",
         temperature=0.3,
     )
 
-    return chat_completion.choices[0].message.content
+    return completion.choices[0].message.content
+
 
 
 
@@ -145,14 +136,17 @@ def evaluate_affordability(input: FinancialInput) -> dict:
 
     # Only trigger AI for risky cases
     if status in ["Risky", "Not Affordable"]:
-        ai_details = generate_ai_recommendations(
-            input,
-            monthly_payment,
-            disposable_income,
-            burden_ratio,
-            status
-        )
-        details = ai_details
+        try:
+            details = generate_ai_recommendations(
+                input,
+                monthly_payment,
+                disposable_income,
+                burden_ratio,
+                status
+            )
+        except Exception as e:
+            print("Groq error:", e)
+            details = "This purchase is financially risky. Consider reducing the loan amount, cutting expenses, or delaying the purchase."
 
     return {
         "status": status,
