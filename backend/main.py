@@ -11,7 +11,7 @@ from groq import Groq
 # -------------------------
 
 app = FastAPI(title="Justifi", version="0.1.0")
-client = Groq(api_key=os.getenv("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"))
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 app.add_middleware(
     CORSMiddleware,
