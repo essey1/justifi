@@ -11,6 +11,7 @@ type FinancialInput = {
   loan_amount: number;
   loan_term_months: number;
   interest_rate: number;
+  loan_item: string;
 };
 
 type Verdict = {
@@ -25,6 +26,7 @@ function App() {
     loan_amount: 0,
     loan_term_months: 0,
     interest_rate: 0,
+    loan_item: "",
   });
 
   const [result, setResult] = useState<Verdict | null>(null);
@@ -86,6 +88,16 @@ function App() {
         <input name="interest_rate" type="number" onChange={handleChange} />
       </label>
 
+      <label>
+        What is this loan for?
+        <input
+          name="loan_purpose"
+          type="text"
+          placeholder="e.g. car, mortgage, medical bills..."
+          onChange={handleChange}
+        />
+      </label>
+
       <button onClick={handleSubmit} disabled={loading}>
         {loading ? "Evaluating..." : "Evaluate"}
       </button>
@@ -95,7 +107,13 @@ function App() {
       {result && (
         <div style={{ marginTop: "1rem" }}>
           <h3>{result.status}</h3>
-          <p>{result.details}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: result.details
+                .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+                .replace(/\n/g, "<br />"),
+            }}
+          />
         </div>
       )}
     </div>

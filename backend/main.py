@@ -31,6 +31,7 @@ class FinancialInput(BaseModel):
     loan_amount: float
     loan_term_months: int
     interest_rate: float
+    loan_item: str
 
 
 class Verdict(BaseModel):
@@ -67,20 +68,20 @@ def generate_ai_recommendations(
 ) -> str:
 
     prompt = f"""
-    A user has:
-    Monthly income: ${input.income}
-    Monthly expenses: ${input.expenses}
-    Loan amount: ${input.loan_amount}
-    Loan term: {input.loan_term_months} months
-    Interest rate: {input.interest_rate}%
+    A user wants to take a loan for: {input.loan_item}
 
-    Monthly payment: ${monthly_payment:.2f}
-    Disposable income: ${disposable_income:.2f}
-    Burden ratio: {burden_ratio:.2f}
-    Status: {status}
+    Their financials:
+    - Monthly income: ${input.income}
+    - Monthly expenses: ${input.expenses}
+    - Loan amount: ${input.loan_amount} over {input.loan_term_months} months at {input.interest_rate}% interest
+    - Estimated monthly payment: ${monthly_payment:.2f}
+    - Disposable income after expenses: ${disposable_income:.2f}
+    - Debt burden ratio: {burden_ratio:.2f} (monthly payment / disposable income)
+    - Affordability status: {status}
 
-    Provide practical financial recommendations.
-    Keep it short and direct.
+    Give 3-5 short, specific recommendations tailored to someone taking a loan for "{input.loan_item}".
+    Reference the actual numbers. Be direct. No generic advice.
+    Format each recommendation as a numbered point.
     """
 
     completion = client.chat.completions.create(
