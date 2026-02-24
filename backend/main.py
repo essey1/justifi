@@ -83,9 +83,15 @@ def generate_ai_recommendations(
     Reference the actual numbers. Be direct. No generic advice.
     Format each recommendation as a numbered point.
 
-    Then add a "Resources" section with 3-5 real, specific resources (websites, tools, or programs)
-    that are directly relevant to "{input.loan_item}" and their financial situation.
-    For each resource include the name, the URL, and one sentence on how it helps them specifically.
+    Then add a "Resources" section with 3-5 real, specific resources that are directly relevant
+    to someone buying/getting a "{input.loan_item}".
+    Think practically — if it's a car, suggest sites to find good deals, compare prices, or check
+    reliability (e.g. CarGurus, Edmunds). If it's home renovation, suggest contractor comparison
+    or material cost sites. If it's medical, suggest cost transparency tools or assistance programs.
+    Focus on resources that help them get the BEST VALUE for "{input.loan_item}", not generic
+    financial calculators.
+    For each resource include the name, the URL, and one sentence on how it helps them specifically
+    with their "{input.loan_item}" purchase.
     Format as a numbered list under a "Resources:" header.
     """
 
