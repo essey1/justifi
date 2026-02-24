@@ -82,6 +82,11 @@ def generate_ai_recommendations(
     Give 3-5 short, specific recommendations tailored to someone taking a loan for "{input.loan_item}".
     Reference the actual numbers. Be direct. No generic advice.
     Format each recommendation as a numbered point.
+
+    Then add a "Resources" section with 3-5 real, specific resources (websites, tools, or programs)
+    that are directly relevant to "{input.loan_item}" and their financial situation.
+    For each resource include the name, the URL, and one sentence on how it helps them specifically.
+    Format as a numbered list under a "Resources:" header.
     """
 
     completion = client.chat.completions.create(
